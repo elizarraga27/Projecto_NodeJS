@@ -56,7 +56,7 @@ app.get('/tasks/:id', async (req, res) => {
      
   }
 }
-  catch{
+  catch(err){
     res.status(500).json({message: err.message})
   }
 
@@ -85,7 +85,7 @@ app.post('/tasks', async (req, res) => {
     }
 }
   }
-  catch{
+  catch(err){
     res.status(500).json({message: err.message})
   }
   
@@ -129,7 +129,7 @@ app.put('/tasks/:id', async (req, res) => {
   
 }
 
-catch{
+catch(err){
   res.status(500).json({message: err.message})
 }
 
@@ -160,7 +160,7 @@ app.delete('/tasks/:id', async (req, res) => {
   }
 }
 
-catch{
+catch(err){
   res.status(500).json({message: err.message})
 }
 
