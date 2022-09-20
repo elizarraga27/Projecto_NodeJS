@@ -11,7 +11,7 @@ const tasks = Task(sequelize, DataTypes)
 app.use(express.json())
 
 app.get('/', (req, res) => {
-  res.status(200).send('API Projeto TOTI');
+  res.status(200).send('API Projeto TOTI, tabela para requisiçoes é tasks');
 })
 
 // List tasks
