@@ -69,10 +69,12 @@ app.post('/tasks', async (req, res) => {
   
   if(description == null || done == null){
     res.status(400).send("os valores inseridos não são corretos, precisa de description e de done")
+    return;
   }
     
     if(description == true || description == false || !isNaN(description)){
     res.status(400).send("o valor de description tem que ser String")
+      return;
   }
 
 
@@ -83,6 +85,7 @@ app.post('/tasks', async (req, res) => {
     done
   })
   res.status(200).send('cadastro pronto')
+      return;
   }
     else{
       res.status(400).send("o valor do done tem que ser boolean insira de novo valor correto")
