@@ -70,6 +70,10 @@ app.post('/tasks', async (req, res) => {
   if(description == null || done == null){
     res.status(400).send("os valores inseridos não são corretos, precisa de description e de done")
   }
+    
+    if(description == true || description == false || !isNaN(description)){
+    res.status(400).send("o valor de description tem que ser String")
+  }
 
 
   else{
@@ -81,7 +85,7 @@ app.post('/tasks', async (req, res) => {
   res.status(200).send('cadastro pronto')
   }
     else{
-      res.status(400).send("o valor do done não boolean insira de novo valor correto")
+      res.status(400).send("o valor do done tem que ser boolean insira de novo valor correto")
     }
 }
   }
@@ -109,6 +113,11 @@ app.put('/tasks/:id', async (req, res) => {
     res.status(400).send('tarefa não encontrada')
     return;
   }
+    if(description == true || description == false || !isNaN(description)){
+    res.status(400).send("o valor de description tem que ser String")
+      return;
+  }
+    
   if(done == null){
     task.set(req.body);
   await task.save();
@@ -123,7 +132,7 @@ app.put('/tasks/:id', async (req, res) => {
   res.status(200).send('tarefa atualizada');
   }
   else{
-    res.status(400).send('valor do done é invalido')
+    res.status(400).send('valor do done é invalido, tem que ser boolean')
   }
 }
   
